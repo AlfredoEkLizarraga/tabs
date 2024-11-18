@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Big Fox</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <span class="subtitle">our works</span>
+      <h1 class="title">Latest Projects</h1>
+
+      <ul class="nav">
+        <li><a class="nav__link" href="#all">all items</a></li>
+        <li><a class="nav__link" href="#mobile">mobile app</a></li>
+        <li><a class="nav__link" href="#web">web app</a></li>
+        <li><a class="nav__link" href="#custom">custom soft</a></li>
+        <li><a class="nav__link" href="#uiux">ui/ux</a></li>
+      </ul>
+
+      <section class="tab_container">
+        <figure class="tab__content" data-category="mobile custom uiux">
+          <img src="./img/port7.jpg" alt="Image 7" />
+          <div class="banner">
+            <i class="bi bi-messenger"></i>
+            <h2 class="banner__ms">Messenger</h2>
+            <p class="banner__text">
+              We work hard on every app to deliver topnotch features with great
+              UI that you won't find anywhere else.
+            </p>
+            <a class="banner__link" href="#"
+              ><i class="bi bi-chevron-right"></i
+            ></a>
+          </div>
+        </figure>
+
+        <figure class="tab__content grid2" data-category="web uiux">
+          <img src="./img/port2.png" alt="Image 2" />
+          <div class="banner">
+            <i class="bi bi-messenger"></i>
+            <h2 class="banner__ms">Messenger</h2>
+            <p class="banner__text">
+              We work hard on every app to deliver topnotch features with great
+              UI that you won't find anywhere else.
+            </p>
+            <a class="banner__link" href="#"
+              ><i class="bi bi-chevron-right"></i
+            ></a>
+          </div>
+        </figure>
+
+        <figure class="tab__content">
+          <img src="./img/port7.jpg" alt="Image 7" />
+          <div class="banner">
+            <i class="bi bi-messenger"></i>
+            <h2 class="banner__ms">Messenger</h2>
+            <p class="banner__text">
+              We work hard on every app to deliver topnotch features with great
+              UI that you won't find anywhere else.
+            </p>
+            <a class="banner__link" href="#"
+              ><i class="bi bi-chevron-right"></i
+            ></a>
+          </div>
+        </figure>
+
+        <figure class="tab__content" data-category=" web">
+          <img src="./img/port3.jpg" alt="Image 3" />
+          <div class="banner">
+            <i class="bi bi-messenger"></i>
+            <h2 class="banner__ms">Messenger</h2>
+            <p class="banner__text">
+              We work hard on every app to deliver topnotch features with great
+              UI that you won't find anywhere else.
+            </p>
+            <a class="banner__link" href="#"
+              ><i class="bi bi-chevron-right"></i
+            ></a>
+          </div>
+        </figure>
+
+        <figure class="tab__content" data-category="mobile custom">
+          <img src="./img/port6.jpg" alt="Image 6" />
+          <div class="banner">
+            <i class="bi bi-messenger"></i>
+            <h2 class="banner__ms">Messenger</h2>
+            <p class="banner__text">
+              We work hard on every app to deliver topnotch features with great
+              UI that you won't find anywhere else.
+            </p>
+            <a class="banner__link" href="#"
+              ><i class="bi bi-chevron-right"></i
+            ></a>
+          </div>
+        </figure>
+      </section>
+
+      <div class="btn">
+        <a href="#" class="btn__link"
+          >view all software<i class="bi bi-arrow-right-short"></i
+        ></a>
+      </div>
+    </main>
+
+    <script>
+      $(document).ready(function () {
+        function isResponsive() {
+          return window.innerWidth <= 395;
+        }
+
+        $(".tab__content").hide();
+        $(".nav li:first").addClass("active");
+        $(".tab__content").show();
+
+        $("ul.nav li").click(function () {
+          $(".nav li").removeClass("active");
+          $(this).addClass("active");
+
+          const activeTab = $(this).find("a").attr("href").substring(1);
+
+          if (isResponsive()) {
+            if (activeTab === "all") {
+              $(".tab__content").fadeIn();
+              $(".grid2").css("grid-column", "1 / 1");
+            } else {
+              $(".tab__content").hide();
+              $(`.tab__content[data-category*='${activeTab}']`).fadeIn();
+
+              if (activeTab === "web") {
+                $(".grid2").css("grid-column", "1 / 1");
+              } else {
+                $(".grid2").css("grid-column", "1 / 1");
+              }
+            }
+            return false;
+          }
+
+          if (activeTab === "all") {
+            $(".tab__content").fadeIn();
+            $(".grid2").css("grid-column", "2 / 4");
+          } else {
+            $(".tab__content").hide();
+            $(`.tab__content[data-category*='${activeTab}']`).fadeIn();
+
+            if (activeTab === "web") {
+              $(".grid2").css("grid-column", "1 / 3");
+            } else {
+              $(".grid2").css("grid-column", "2 / 4");
+            }
+          }
+          return false;
+        });
+      });
+    </script>
+  </body>
+</html>
